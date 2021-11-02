@@ -1,6 +1,6 @@
 {% extends 'main/base.html' %}
 
-{% block title %}{{ title }}{% endblock %}
+{% block title %}Новости сайта{% endblock %}
 
 {% block content %}
     <div class="features">
@@ -10,6 +10,7 @@
                 <div class="alert alert-warning">
                     <h3>{{n.title}}</h3>
                     <p>{{n.anons}}</p>
+                    <a href="{% url 'news-detail' n.id %}" class="btn btn-warning">Читать...</a>
                 </div>
             {% endfor %}
         {% else %}
