@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic import DetailView
+from django.views.generic import DetailView, DeleteView, UpdateView
 
 from .models import Article
 from .forms import ArticleForm
@@ -35,3 +35,16 @@ def create(request):
         'error': error
     }
     return render(request, 'news/create.html', data)
+
+
+class NewsUpdateView(UpdateView):
+    model = Article
+    template_name = 'news/create.html'
+
+    form_class = ArticleForm
+
+
+class NewsDeleteView(DeleteView):
+    model = Article
+    success_url = '/news/'
+    template_name = 'news/news-delete.html'
